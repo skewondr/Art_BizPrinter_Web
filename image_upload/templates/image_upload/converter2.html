@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block title %}
+- Converter
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<header>
+  <link rel="stylesheet" href="{% static 'codepen/css/converter2.css' %}">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/utils/Draggable.min.js"></script>
+</header>
+<body>
+  <div class="container__verti">
+    <div class="col">
+      <div class="container__hori">
+        <div class="item">
+          <br>
+          <h4>Style</h4>
+          <div class="styles">
+            <table class="style-table small" align="center">
+            	<tr class="img s1">
+                <form action={% url 'open_converter' %} method="post">
+                  {% csrf_token %}
+                  <button class="styles_form" type="submit" style="border: 0; background: transparent">
+                    <input name="num" type="hidden" value="1">
+                    <img src="{% static 'codepen/img/style1.png' %}" alt="Style1" />
+                  </button>
+                </form>
+            	</tr>
+              <tr class="img s2">
+                <form action={% url 'open_converter' %} method="post">
+                  {% csrf_token %}
+                  <button class="styles_form" type="submit" style="border: 0; background: transparent">
+                    <input name="num" type="hidden" value="2">
+                    <img src="{% static 'codepen/img/style2.jpg' %}" alt="Style2" />
+                  </button>
+                </form>
+            	</tr>
+              <br/>
+              <tr class="img s3">
+                <form action={% url 'open_converter' %} method="post">
+                  {% csrf_token %}
+                  <button class="styles_form" type="submit" style="border: 0; background: transparent">
+                    <input name="num" type="hidden" value="3">
+                    <img src="{% static 'codepen/img/Style3.jpg' %}" alt="Style3" />
+                  </button>
+                </form>
+            	</tr>
+              <tr class="img s4">
+                <form action={% url 'open_converter' %} method="post">
+                  {% csrf_token %}
+                  <button class="styles_form" type="submit" style="border: 0; background: transparent">
+                    <input name="num" type="hidden" value="4">
+                    <img src="{% static 'codepen/img/style4.jpeg' %}" alt="Style4" />
+                  </button>
+                </form>
+            	</tr>
+              <br/>
+              <tr class="img s5">
+                <form action={% url 'open_converter' %} method="post">
+                  {% csrf_token %}
+                  <button class="styles_form" type="submit" style="border: 0; background: transparent">
+                    <input name="num" type="hidden" value="5">
+                    <img src="{% static 'codepen/img/style5.jpg' %}" alt="Style5" />
+                  </button>
+                </form>
+            	</tr>
+              <tr class="img s6">
+                <form action={% url 'open_converter' %} method="post">
+                  {% csrf_token %}
+                  <button class="styles_form" type="submit" style="border: 0; background: transparent">
+                    <input name="num" type="hidden" value="6">
+                    <img src="{% static 'codepen/img/style6.png' %}" alt="Style6" />
+                  </button>
+                </form>
+            	</tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="item">
+          <div id="before-after">
+            <!-- onerror="this.src='{% static 'codepen/img/error2.jpg' %}'"-->
+            <div class="view view-after"><img src={{output|safe}} onerror="this.src='{% static 'codepen/img/curtain.jpg' %}'" alt="" style="width: 600px; height:500px;" /></div>
+            <div class="view view-before"><img src={{input|safe}} onerror="this.src='{% static 'codepen/img/error.jpg' %}'" alt="" style="width: 600px; height:500px;" /></div>
+          	<div id="dragme"></div>
+          </div>
+        </div>
+        <div class="item">
+          <br>
+          <h4>Color</h4>
+          <div class="colors">
+            <table class="color-table small" align="center">
+            	<tr>
+            		<td class="sample sample-1 reds-1"></td>
+            		<td class="sample sample-2 reds-2"></td>
+            		<td class="sample sample-3 reds-3"></td>
+            		<td class="sample sample-4 reds-4"></td>
+            	</tr>
+            </table>
+
+            <table class="color-table small" align="center">
+            	<tr>
+            		<td class="sample sample-1 oranges-1"></td>
+            		<td class="sample sample-2 oranges-2"></td>
+            		<td class="sample sample-3 oranges-3"></td>
+            		<td class="sample sample-4 oranges-4"></td>
+            	</tr>
+            </table>
+
+            <table class="color-table small" align="center">
+            	<tr>
+            		<td class="sample sample-1 greens-1"></td>
+            		<td class="sample sample-2 greens-2"></td>
+            		<td class="sample sample-3 greens-3"></td>
+            		<td class="sample sample-4 greens-4"></td>
+            	</tr>
+            </table>
+
+            <table class="color-table small" align="center">
+            	<tr>
+            		<td class="sample sample-1 turquoises-1"></td>
+            		<td class="sample sample-2 turquoises-2"></td>
+            		<td class="sample sample-3 turquoises-3"></td>
+            		<td class="sample sample-4 turquoises-4"></td>
+            	</tr>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col" style="justify-content:center">
+      <div class="arrows">
+        <ul id="controls">
+          <li id="controls" class="to-start"><img src="{% static 'codepen/img/arrow 2.png' %}" alt="" /></li>
+          <li id="controls" class="to-middle"><img src="{% static 'codepen/img/minus.png' %}" alt="" /></li>
+          <li id="controls" class="to-end"><img src="{% static 'codepen/img/arrow.png' %}" alt="" /></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'codepen/js/converter.js' %}"></script>
+{% endblock %}
