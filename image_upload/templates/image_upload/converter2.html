@@ -7,9 +7,20 @@
 
 {% block content %}
 <header>
-  <link rel="stylesheet" href="{% static 'codepen/css/converter2.css' %}">
+  <link rel="stylesheet" href="{% static 'codepen/css/converter3.css' %}">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/utils/Draggable.min.js"></script>
+  <script language="javascript">
+    function validate(){
+      if(document.f.data.value=="1"){
+        alert({{output|safe}});
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+  </script>
 </header>
 <body>
   <div class="container__verti">
@@ -77,6 +88,8 @@
                 </form>
             	</tr>
             </table>
+            <br><br>
+            <p>Press button to change the image style.</p>
           </div>
 
         </div>
@@ -128,22 +141,49 @@
             	</tr>
             </table>
           </div>
-
+          <br><br><br><br><br><br><br>
+          <p>These are the colors used in beads art</p>
         </div>
       </div>
     </div>
     <div class="col" style="justify-content:center">
-      <div class="arrows">
-        <ul id="controls">
-          <li id="controls" class="to-start"><img src="{% static 'codepen/img/arrow 2.png' %}" alt="" /></li>
-          <li id="controls" class="to-middle"><img src="{% static 'codepen/img/minus.png' %}" alt="" /></li>
-          <li id="controls" class="to-end"><img src="{% static 'codepen/img/arrow.png' %}" alt="" /></li>
-        </ul>
+      <div class="bottom__hori">
+        <div class="item2">
+        </div>
+        <div class="item2">
+          <div class="arrows">
+            <ul id="controls">
+              <li id="controls" class="to-start"><img src="{% static 'codepen/img/arrow 2.png' %}" alt="" /><p>Before</p></li>
+              <li id="controls" class="to-middle"><img src="{% static 'codepen/img/minus.png' %}" alt="" /><p>Compare</p></li>
+              <li id="controls" class="to-end"><img src="{% static 'codepen/img/arrow.png' %}" alt="" /><p>After</p></li>
+            </ul>
+          </div>
+        </div>
+        <div class="item2">
+          <p>Print into Beads Art
+            <span>
+
+                <a href="#popup-article" id="print" class="open-popup">
+                  <button class="print_form" type="submit" style="border: 0; background: transparent">
+                    <input name="data" type="hidden" value="1">
+                    <img src="{% static 'codepen/img/print.png' %}" alt="print" />
+                  </button>
+                </a>
+
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </body>
-
+<div id="popup-article" class="popup">
+  <div class="popup__block">
+    <h1 class="popup__title">Output is below.</h1>
+    <img src="{% static 'codepen/img/style6.png' %}" alt="Style6" />
+    <a href="#" class="popup__close">close</a>
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{% static 'codepen/js/converter.js' %}"></script>
 {% endblock %}

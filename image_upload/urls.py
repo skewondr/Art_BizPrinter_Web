@@ -10,6 +10,7 @@ urlpatterns = [
     path('img_upload_success/',
          TemplateView.as_view(template_name='image_upload/img_upload_success.html'), name='img_upload_success'),
     path('open_cvtr/',views.open_converter,name='open_converter'),
+    path('open_cvtr/popup/',views.popup,name='popup'),
     path('get_data/', views.get_data, name='get_data'),
 ]
 

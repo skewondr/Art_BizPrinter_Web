@@ -318,9 +318,9 @@ def open_converter(request):
             datas={"input":path, "output":"/static/codepen/img/style6.png"}
 
     return render(request,'image_upload/converter2.html',datas)
-    
-def change_color(request):
-    return render(request,'test.html')
+
+def popup(request):
+    return render(request,'image_upload/popup.html')
 
 def get_data(request):
     switch = Photo.objects.filter(label=1)
