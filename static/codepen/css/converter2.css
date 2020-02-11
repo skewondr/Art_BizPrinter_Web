@@ -118,12 +118,11 @@
   background-size: contain;
   background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
 }
-
+/*
 .open-popup{
-  color: #000000;
   text-transform: uppercase;
   padding: 1rem 2rem;
-}
+}*/
 
 .page{
   min-height: 100vh;
@@ -159,11 +158,11 @@ LinkedIn
 .linkedin__link{
   color: #ff5c5c;
 }
-
+/*
 body{
 	-webkit-overflow-scrolling: touch;
   overflow-y: scroll;
-}
+}*/
 body, div, p{
 	margin: 0;
 	padding: 0;
@@ -188,6 +187,14 @@ body, div, p{
 		flex-shrink: 1;
 		text-align: center;
 	}
+  .item2:nth-child(1){
+		flex-basis: 300;
+		flex-shrink: 1;
+		text-align: left;
+		margin-top: 20px;
+		margin-bottom: 50px;
+		margin-right: 10px;
+	}
 	.item2:nth-child(3){
 		flex-basis: 300;
 		flex-shrink: 1;
@@ -196,6 +203,9 @@ body, div, p{
 		margin-bottom: 50px;
 		margin-right: 10px;
 	}
+  .item2 p{
+    font-family: 'Galada', cursive;
+  }
 
 .container__hori{
 	/*background-color: powderblue;*/
@@ -203,7 +213,10 @@ body, div, p{
 }
 
 	.item{
-		background-color: plum;
+    font-family: 'Galada', cursive;
+    background: url("img/sunset.png");
+    background-position: center;
+    background-size: cover;
 		color:white;
 		/*border: 1px solid white;*/
 		flex-basis: 300px;
@@ -220,6 +233,9 @@ body, div, p{
 		width: 600px;
 		height: 500px;
 	}
+  .item p{
+    font-family: 'Galada', cursive;
+  }
 
 	#before-after{
 		position: relative;
@@ -259,7 +275,6 @@ body, div, p{
 				height: 100%;
 				top: 0px;
 				left: 0px;
-				background-color: midnightblue;
 				cursor: pointer;
 				z-index: 300;
 			}
@@ -298,7 +313,6 @@ body, div, p{
 }
 .color-table.small td.sample {
 	width:3em; height:3em;
-	border: 1px solid lightsalmon;
 	border-radius:20%;
 	border-spacing: 30%;
 	}

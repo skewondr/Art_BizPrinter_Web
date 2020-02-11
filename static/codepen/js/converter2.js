@@ -23,7 +23,7 @@ $(function(){
   }
 
   //Intro Animation
-  animateTo(198);
+  animateTo(200);
 
 
   //Externall nav
@@ -32,11 +32,11 @@ $(function(){
   });
 
   $(".to-middle").on("click", function(){
-	  animateTo(298);
+	  animateTo(300);
   });
 
   $(".to-end").on("click", function(){
-	  animateTo(598);
+	  animateTo(600);
   });
 
   function animateTo(_left){

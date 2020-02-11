@@ -33,6 +33,7 @@ class PhotoUploadView(CreateView):
         Photo.objects.all().delete()
         form.instance.author_id = self.request.user.id
         if form.is_valid():
+            removeFile()
             form.instance.save()
             return redirect('open_converter')
         else:
@@ -130,22 +131,26 @@ def total_cost(J_content, J_style, alpha = 10, beta = 40):
 
 def generate_rgb_list():
     rgb_colors_list = [
-        [8, 153, 85], #1 dark green #089955
-        [22, 15, 219], #2 dark blue #160fdb
-        [166, 0, 255], #3 purple #a600ff
-        [137, 211, 250], #4 light blue #89d3fa
-        [255, 59, 121], #5 hot pink #ff3b7c
-        [255, 186, 210], #6 light pink #ffbad2
-        [188, 255, 181], #7 yellow green #bcffb5
-        [240, 10, 10], #8 red #f00a0a
-        [150, 144, 144], #9 grey #969090
-        [255, 251, 28], #10 yellow #fffb1c
-        [255, 221, 31], #11 deep yellow #ffdd1f
-        [255, 108, 3], #12 orange #ff6403
-        [79, 39, 17], #13 brown #4f2711
-        [255, 207, 158], #14 peach #ffcf9e
-        [0,0,0], #15 black #000000
-        [255, 255, 255] #16 white #ffffff
+    [255, 251, 28], #10 yellow #fffb1c
+    [255, 221, 31], #11 deep yellow #ffdd1f
+    [255, 207, 158], #14 peach #ffcf9e
+    [255, 108, 3], #12 orange #ff6403
+
+    [255, 186, 210], #6 light pink #ffbad2
+    [255, 59, 121], #5 hot pink #ff3b7c
+    [240, 10, 10], #8 red #f00a0a
+    [79, 39, 17], #13 brown #4f2711
+
+    [188, 255, 181], #7 yellow green #bcffb5
+    [8, 153, 85], #1 dark green #089955
+    [137, 211, 250], #4 light blue #89d3fa
+    [22, 15, 219], #2 dark blue #160fdb
+
+    [255, 255, 255], #16 white #ffffff
+    [150, 144, 144], #9 grey #969090
+    [0,0,0], #15 black #000000
+    [166, 0, 255] #3 purple #a600ff
+
     ]
 
     return rgb_colors_list
@@ -185,11 +190,13 @@ class ImgProcessor:
         return rgb_colors_list[index]
 
 #summary function------------------------------------------------------------------------------#
-def removeFile(filePath):
-    if os.path.exists(filePath):
-        for file in os.scandir(filePath):
+def removeFile():
+
+    if os.path.exists(m_u):
+        for file in os.scandir(m_u):
+            if file.name.endswith('.txt'):
+                continue
             os.remove(file.path)
-        return True
 
 def prepare_data(face, style):#모델에 넣기 위해 지정 사이즈로 변환
 
@@ -208,11 +215,14 @@ def prepare_data(face, style):#모델에 넣기 위해 지정 사이즈로 변�
     ip.im_resize(face,m_u+"/content_img.jpg",size)
     ip.im_resize(style,m_u+"/style_img.jpg",size)
 
-def save_data(output, face):
+def save_data(output):
 
     ip = ImgProcessor()
-    af_size=ImgProcessor.my_size(face)
-    ip.im_resize(output,m_u+"/final_image.jpg",af_size)
+    size=(29,29)
+    rgb_color=generate_rgb_list()
+    ip.im_resize(output,m_u+"/final_image.jpg",size)
+    ip.move_color(m_u+"/final_image.jpg",m_u+"/final2_image.jpg",rgb_color)
+
 
 def start_model(sess):#모델을 돌려서 generated image 하나만 생성.
 
@@ -307,11 +317,12 @@ def open_converter(request):
             if (converter(m_u+"/"+input2,s_u+"/codepen/img/style1.png")):
                 datas={"input":path, "output":"/media/"+"generated_image.jpg"}
         elif num =='2':
-            datas={"input":path, "output":"/static/codepen/img/style2.jpg"}
+            save_data(s_u+"/codepen/img/style2.jpg")
+            datas={"input":path, "output":"/static/codepen/img/style2.jpg", "output2":"/media/"+"final2_image.jpg"}
         elif num =='3':
             datas={"input":path, "output":"/static/codepen/img/Style3.jpg"}
         elif num =='4':
-            datas={"input":path, "output":"/static/codepen/img/style4.jpeg"}
+            datas={"input":path, "output":"/static/codepen/img/style4.png"}
         elif num =='5':
             datas={"input":path, "output":"/static/codepen/img/style5.jpg"}
         else :

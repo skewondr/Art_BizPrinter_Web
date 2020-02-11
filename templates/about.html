@@ -4,12 +4,53 @@
     About us
 {% endblock %}
 
+{% load static %}
+
 {% block content %}
-  <div class="container jumbotron">
-      <h1 class="display-3">Hello, world!</h1>
-      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <p>Juhyeong Kim</p>
+<header class="showcase">
+  <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'codepen/css/about.css' %}">
+</header>
+<body>
+  <div>
+    <h1>Introduction of Project Binbong</h1>
+    <div class="container">
+      <div class="item">
+        <img src="{% static 'codepen/img/family.jpeg' %}" alt="" style="width: 500px; height:350px;"/>
+      </div>
+      <div class="item">
+        <img src="{% static 'codepen/img/lion.png' %}" alt="" style="width: 500px; height:350px;"/>
+      </div>
+    </div>
+    <br><br>
+    <div class="detail">
+      <p class="lead">This project is going on in PeopleSpace during 2020.1.2. ~ 2020.2.19.</p>
+      <br><br>
+      <h3>Objective</h3>
+      <p class="lead">This service automatically generates new style of image. You can download the image or print it with a beads printer.</p>
+      <ol>
+        <li>Upload a photo you want</li>
+        <li>Select one style between many kinds of illustration.</li>
+        <li>Once you generate new image, you can print it with a beads printer!</li>
+      </ol>
+      <br><br>
+    </div>
+    <hr class="my-4">
+    <br><br>
+    <div class="detail">
+      <h3>What is PeopleSpace?</h3>
+      <img src="{% static 'codepen/img/ps.png' %}" alt="" style="width: 1000px; height:350px;"/>
+      <br><br>
+      <p>A 501(C)(3) educational non-profit organization.</p>
+      <a href="https://peoplespace.us">https://peoplespace.us</a>
+      <p></p>
+      <br><br>
+      <h3>Web Developer/</h3>
+      <p>Yoonjin Im, Juhyeong Kim</p>
+      <br><br>
+      <h3>Beads Printer Developer/</h3>
+      <p>Martin, Inhee, David, Allen, Grace</p>
+    </div>
   </div>
+<body>
 {% endblock %}
