@@ -6845,8 +6845,8 @@ a.close.disabled {
   vertical-align: text-top !important;
 }
 
-.bg-primary {
-  background-color: #1E1C41 !important;
+.bg-primary {/*menu bar*/
+  background-color: #020b40 !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,

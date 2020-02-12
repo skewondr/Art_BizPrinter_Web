@@ -35,7 +35,7 @@ class PhotoUploadView(CreateView):
         if form.is_valid():
             removeFile()
             form.instance.save()
-            return redirect('open_converter')
+            return redirect('open_converter0')
         else:
             return self.render_to_response({'form': form})
 
@@ -304,29 +304,46 @@ def converter(face, style):
     tf.InteractiveSession.close(sess)
     return True
 
+def open_converter0(request):
+    input=Photo.objects.filter(label=1)
+    input2=str(input[0].photo)
+    path="/media/"+input2
+
+    datas={"input":path}
+
+    return render(request,'image_upload/converter.html',datas)
+
 def open_converter(request):
     input=Photo.objects.filter(label=1)
     input2=str(input[0].photo)
     path="/media/"+input2
 
-    datas={"input":path, "output":"img/i.jpg"} #img/i.jpg는 일부러 오류 내려고 넣음
-
     if request.method=='POST':
         num=request.POST['num']
         if num =='1':
-            if (converter(m_u+"/"+input2,s_u+"/codepen/img/style1.png")):
-                datas={"input":path, "output":"/media/"+"generated_image.jpg"}
+            if (converter(m_u+"/"+input2,s_u+"/codepen/img/style1.png")): #모델 돌리기
+                save_data(m_u+"/generated_image.jpg") #이미지 29*29 사이즈로 저장하기
+                datas={"input":path, "output":"/media/"+"generated_image.jpg", "output2":"/media/"+"final2_image.jpg"}
         elif num =='2':
-            save_data(s_u+"/codepen/img/style2.jpg")
-            datas={"input":path, "output":"/static/codepen/img/style2.jpg", "output2":"/media/"+"final2_image.jpg"}
+            if (converter(m_u+"/"+input2,s_u+"/codepen/img/style2.jpg")): #모델 돌리기
+                save_data(m_u+"/generated_image.jpg") #이미지 29*29 사이즈로 저장하기
+                datas={"input":path, "output":"/media/"+"generated_image.jpg", "output2":"/media/"+"final2_image.jpg"}
         elif num =='3':
-            datas={"input":path, "output":"/static/codepen/img/Style3.jpg"}
+            if (converter(m_u+"/"+input2,s_u+"/codepen/img/Style3.jpg")): #모델 돌리기
+                save_data(m_u+"/generated_image.jpg") #이미지 29*29 사이즈로 저장하기
+                datas={"input":path, "output":"/media/"+"generated_image.jpg", "output2":"/media/"+"final2_image.jpg"}
         elif num =='4':
-            datas={"input":path, "output":"/static/codepen/img/style4.png"}
+            if (converter(m_u+"/"+input2,s_u+"/codepen/img/style4.png")): #모델 돌리기
+                save_data(m_u+"/generated_image.jpg") #이미지 29*29 사이즈로 저장하기
+                datas={"input":path, "output":"/media/"+"generated_image.jpg", "output2":"/media/"+"final2_image.jpg"}
         elif num =='5':
-            datas={"input":path, "output":"/static/codepen/img/style5.jpg"}
+            if (converter(m_u+"/"+input2,s_u+"/codepen/img/style5.jpg")): #모델 돌리기
+                save_data(m_u+"/generated_image.jpg") #이미지 29*29 사이즈로 저장하기
+                datas={"input":path, "output":"/media/"+"generated_image.jpg", "output2":"/media/"+"final2_image.jpg"}
         else :
-            datas={"input":path, "output":"/static/codepen/img/style6.png"}
+            if (converter(m_u+"/"+input2,s_u+"/codepen/img/style6.png")): #모델 돌리기
+                save_data(m_u+"/generated_image.jpg") #이미지 29*29 사이즈로 저장하기
+                datas={"input":path, "output":"/media/"+"generated_image.jpg", "output2":"/media/"+"final2_image.jpg"}
 
     return render(request,'image_upload/converter2.html',datas)
 

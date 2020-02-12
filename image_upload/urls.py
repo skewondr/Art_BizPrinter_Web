@@ -9,6 +9,7 @@ urlpatterns = [
     path('img_upload/', PhotoUploadView.as_view(), name='img_upload'),
     path('img_upload_success/',
          TemplateView.as_view(template_name='image_upload/img_upload_success.html'), name='img_upload_success'),
+    path('open_cvtr0/',views.open_converter0,name='open_converter0'),
     path('open_cvtr/',views.open_converter,name='open_converter'),
     path('popup/',views.popup,name='popup'),
     path('get_data/', views.get_data, name='get_data'),

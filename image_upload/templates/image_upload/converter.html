@@ -85,9 +85,8 @@
         </div>
         <div class="item">
           <div id="before-after">
-            <div class="view view-after"><img src={{output|safe}} alt="" style="width: 600px; height:500px;" /><!--<div id="loader" class="loader"></div>--></div>
+            <div class="view view-after"><!--<div id="loader" class="loader"></div>--></div>
             <div class="view view-before"><img src={{input|safe}} onerror="this.src='{% static 'codepen/img/error.jpg' %}'" alt="" style="width: 600px; height:500px;" /></div>
-          	<div id="dragme"></div>
           </div>
         </div>
         <div class="item">
@@ -135,57 +134,8 @@
         </div>
       </div>
     </div>
-    <div class="col" style="justify-content:center">
-      <div class="bottom__hori">
-        <div class="item2">
-          <p>
-            <span>
-                <a href={{output|safe}} download>
-                  <button class="download_form" type="submit" style="border: 0; background: transparent">
-                    <img src="{% static 'codepen/img/down-arrow.png' %}" alt="download" />
-                  </button>
-                </a>
-            </span>
-          Download Image</p>
-        </div>
-        <div class="item2">
-          <div class="arrows">
-            <ul id="controls">
-              <li id="controls" class="to-start"><img src="{% static 'codepen/img/arrow 2.png' %}" alt="" /><p>Before</p></li>
-              <li id="controls" class="to-middle"><img src="{% static 'codepen/img/minus.png' %}" alt="" /><p>Compare</p></li>
-              <li id="controls" class="to-end"><img src="{% static 'codepen/img/arrow.png' %}" alt="" /><p>After</p></li>
-            </ul>
-          </div>
-        </div>
-        <div class="item2">
-          <p>Print into Beads Art
-            <span>
-                <a href="#popup-article" id="print" class="open-popup">
-                  <button class="print_form" type="submit" style="border: 0; background: transparent">
-                    <input name="data" type="hidden" value="1">
-                    <img src="{% static 'codepen/img/print.png' %}" alt="print" />
-                  </button>
-                </a>
-            </span>
-          </p>
-        </div>
-      </div>
-    </div>
   </div>
 </body>
-<div id="popup-article" class="popup">
-  <div class="popup__block">
-    <h3 class="popup__title">Beads Art Output (29X29)
-      <span>
-        <a href="{% url 'get_data' %}">
-          <button type="button" class="btn btn-primary btn-lg " id="load1" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing Order">Print</button>
-        </a>
-      </span>
-    </h3>
-    <img src="{{output2|safe}}" alt="" style="width: 600px; height:600px;"/>
-    <a href="#" class="popup__close">close</a>
-  </div>
-</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{% static 'codepen/js/converter2.js' %}"></script>
